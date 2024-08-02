@@ -1,10 +1,6 @@
-/*
-Theme Name: Photos_Nathalie_Mota
-Theme URI: http://photosnm.local
-Author: Guillaume_Tourault
-Author URI: https://openclassrooms.com
-Description: Thème pour le projet "Créez un site WordPress complexe pour une photographe freelance"
-Version: 1.0
-Tags: projet_openclassrooms
-Text Domain: photos_nm
-*/
+h1 {
+  color: red;
+  font-size: 55px;
+}
+
+/*# sourceMappingURL=style.css.map */
