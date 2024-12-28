@@ -114,3 +114,25 @@
     align-items: center;
     padding-top: 20px;
 }
+
+
+@media (max-width: 900px) {
+
+    .lightbox-next,
+    .lightbox-prev {
+        text-indent: -9999px;
+        color: transparent;
+    }
+}
+
+@media (max-width: 375px) {
+
+    .lightbox-categorie,
+    .lightbox-reference {
+        font-size: 1rem;
+    }
+
+    .lightbox-close {
+        top: 10%;
+    }
+}

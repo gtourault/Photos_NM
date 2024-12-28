@@ -160,16 +160,18 @@ function theme_apply_custom_fonts()
         }
 
 
-        .custom_default,
-        li {
+        .custom_select,
+        .custom_default li {
             font-family: <?php echo get_theme_mod('theme_select_font', 'Poppins'); ?>, sans-serif;
         }
 
-        p {
+        p,
+        .modal-form input {
             font-family: <?php echo get_theme_mod('theme_paragraph_font', 'Poppins'); ?>, sans-serif;
         }
 
-        #nav-header li a {
+        #nav-header li a,
+        .modal-form .btn_submit {
             font-family: <?php echo get_theme_mod('theme_header_menu_font', 'Space Mono'); ?>, sans-serif;
 
         }

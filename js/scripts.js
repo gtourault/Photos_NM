@@ -252,7 +252,8 @@ jQuery(document).ready(function ($) {
 
         // Gestionnaire d'événement pour chaque élément <li> à l'intérieur de '.custom_options'
         element.querySelectorAll('.custom_options li').forEach(function (li) {
-            //li.classList.toggle('anim_select')s
+            //li.classList.toggle('anim_select');
+            console.log('ixci');
             li.addEventListener('click', function (event) {
                 event.stopPropagation(); // Empêche la propagation de l'événement
 

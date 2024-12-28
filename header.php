@@ -26,7 +26,7 @@
 
 <body <?php body_class(); ?>>
 	<header class="site-header">
-		<a href="<?php echo esc_url(home_url('/')); ?>">
+		<a class="site-logo" href="<?php echo esc_url(home_url('/')); ?>">
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Nathalie_Mota.png" alt="<?php bloginfo('name'); ?>">
 		</a>
 
