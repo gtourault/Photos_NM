@@ -2,6 +2,11 @@
     display: none;
 }
 
+.lightbox.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
 .lightbox {
     position: fixed;
     top: 0;
@@ -13,6 +18,9 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .lightbox-content {
@@ -79,20 +87,14 @@
 }
 
 .lightbox-reference {
-    //position: absolute;
-    //bottom: -8%;
     font-size: 1.5rem;
     color: white;
-    //left: 22%;
 }
 
 
 .lightbox-categorie {
-    //position: absolute;
-    //bottom: -8%;
     font-size: 1.5rem;
     color: white;
-    //right: 22%;
 }
 
 

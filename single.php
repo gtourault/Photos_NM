@@ -20,7 +20,6 @@ get_header();
 			<?php
 				$term_format = get_the_terms($post_id, 'format');
 				$term_categorie = get_the_terms($post_id, 'categorie');
-				//var_dump($term_categorie);
 				if ($term_categorie && !is_wp_error($term_categorie)) {
 					foreach ($term_categorie as $term) {
 						echo '<span id="filter_categorie" data-value="' . $term->taxonomy . '">' . esc_html($term->taxonomy) . " : " . esc_html($term->slug) . '</span>';
@@ -53,7 +52,6 @@ get_header();
 	<p>Cette photo vous intéresse ?</p>
 	<button id="modalBtn" class="contact-modal">Contact</button>
 	<?php
-	/* Code fonctionnel pour navigation photo */
 	$args = array(
 		'post_type' => 'photo',
 		'posts_per_page' => -1,
@@ -80,15 +78,15 @@ get_header();
 		<div class="navigation-buttons">
 			<a href="<?php echo get_permalink($prev_photo->ID); ?>" class="nav-button arrow prev-photo">
 				<svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" viewBox="0 0 30 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-					<path d="M28 12H8"></path> <!-- Ligne horizontale plus longue -->
-					<path d="M12 6L6 12l6 6"></path> <!-- Pointe de la flèche avec lignes moins épaisses -->
+					<path d="M28 12H8"></path>
+					<path d="M12 6L6 12l6 6"></path>
 				</svg>
 				<span class="thumbnail" style="background-image: url('<?php echo esc_url($prev_thumbnail); ?>');"></span>
 			</a>
 			<a href="<?php echo get_permalink($next_photo->ID); ?>" class="nav-button arrow next-photo">
 				<svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" viewBox="0 0 30 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-					<path d="M2 12h20"></path> <!-- Ligne horizontale plus longue -->
-					<path d="M18 6l6 6-6 6"></path> <!-- Pointe de la flèche avec lignes moins épaisses -->
+					<path d="M2 12h20"></path>
+					<path d="M18 6l6 6-6 6"></path>
 				</svg>
 				<span class="thumbnail" style="background-image: url('<?php echo esc_url($next_thumbnail); ?>');"></span>
 			</a>
@@ -126,15 +124,6 @@ get_header();
 				$thumbnail_photo = get_field('photo');
 				$permalink = get_permalink();
 				if ($thumbnail_photo) {
-					/*
-					echo "<div class='div_container_photo gallery'>";
-					echo '<img class="gallery-image" src="' . esc_url($thumbnail_photo['url']) . '" alt="' . esc_attr($thumbnail_photo['alt']) . '">';
-					echo '<span class="span_link icon_fullscreen">⛶</span>';
-					echo '<span class="photo_category">' . $term_categorie . '</span>';
-					//echo '<span class="photo_title">' . $photo_title . '</span>';
-					echo '<span class="icon_eye" data-url="' . $permalink . '">👁️</span>';
-					echo "</div>";
-					*/
 					get_template_part('template-parts/content', get_post_format());
 				}
 			}

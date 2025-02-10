@@ -4,6 +4,11 @@
   display: none;
 }
 
+.lightbox.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .lightbox {
   position: fixed;
   top: 0;
@@ -15,6 +20,9 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
 .lightbox-content {
@@ -123,30 +131,13 @@ p {
   font-weight: 300;
 }
 
-/*main {
-    display: flex;
-    justify-content: center;
-}
-*/
 .text_like {
   margin: 80px 0px 80px 100px;
   font-family: "Space Mono", sans-serif;
 }
 
 .photo_container {
-  /*
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      width: 88vw;
-      justify-content: space-between;
-      justify-self: center;
-      gap: 2em;
-      padding-bottom: 50px;
-  */
-  /* Deux colonnes de la même largeur */
   gap: 2em;
-  /* Espacement entre les colonnes */
   width: 88vw;
   justify-content: space-between;
   justify-self: center;
@@ -157,7 +148,6 @@ p {
   height: 70vh;
   position: relative;
   overflow: hidden;
-  flex-grow: 1;
   flex-basis: 42vw;
   transition: width 0.5s ease;
 }
@@ -263,7 +253,6 @@ p {
 
 .hero {
   height: 100vh;
-  /* Ajuste la hauteur selon tes besoins */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -341,6 +330,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
 }
+
 /* Css navigation photo  */
 .navigation-buttons {
   display: flex;
@@ -362,7 +352,7 @@ p {
 .nav-button.next-photo span {
   position: absolute;
   top: -200%;
-  left: -20%;
+  left: 0%;
   transform: translateX(-50%);
   width: 100px;
   height: 75px;
@@ -375,7 +365,7 @@ p {
 .nav-button.prev-photo span {
   position: absolute;
   top: -200%;
-  left: 106%;
+  left: 100%;
   transform: translateX(-50%);
   width: 100px;
   height: 75px;
@@ -386,38 +376,11 @@ p {
   z-index: -999;
 }
 
-/*
-.nav-button .thumbnail.lazyloaded {
-    position: absolute;
-    top: -200%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 75px;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    z-index: -999;
-}
-*/
-.nav-button:hover .thumbnail.lazyloaded {
+.nav-button:hover .thumbnail {
   opacity: 1;
   z-index: 2;
 }
 
-/*
-.prev-photo {
-    background-image: url('./images/Line_6_left.png');
-}
-
-.next-photo {
-    background-image: url('./images/Line_7_right.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-left: 10px;
-}
-*/
 .container_photo_apparente {
   display: flex;
   flex-direction: row;
@@ -612,7 +575,7 @@ p {
 }
 
 .burger-menu.active span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
+  transform: translateY(15px) rotate(45deg);
 }
 
 .burger-menu.active span:nth-child(2) {
@@ -644,7 +607,6 @@ p {
   }
   .navbar .burger-menu {
     display: flex;
-    /* Cacher l'icône burger */
   }
   .navbar .nav-menu a {
     color: white;
@@ -695,6 +657,9 @@ p {
 }
 /* Petits écrans (grands smartphones) */
 @media (max-width: 650px) {
+  .photo_container {
+    width: 90vw;
+  }
   .photo_container .div_container_photo {
     height: 40vh;
     flex-basis: 42vw;
@@ -766,13 +731,25 @@ p {
     max-width: 50vw;
   }
 }
+@media (max-width: 425px) {
+  .photo_container {
+    justify-content: center;
+  }
+  .photo_container .div_container_photo {
+    height: 30vh;
+    flex-basis: 70vw;
+  }
+}
 @media (max-width: 375px) {
   #nav-footer {
     width: 100%;
   }
+  .photo_container {
+    justify-content: center;
+  }
   .photo_container .div_container_photo {
     height: 30vh;
-    flex-basis: 42vw;
+    flex-basis: 70vw;
   }
   .photo_container .div_container_photo span.icon_eye {
     width: 100px;
@@ -894,6 +871,7 @@ p {
   color: #313144;
   display: flex;
   align-items: center;
+  opacity: 0;
 }
 .custom_options li:nth-child(1):hover {
   background-color: #FFFFFF;
@@ -925,12 +903,10 @@ p {
   0% {
     opacity: 0;
     transform: translateY(-20px);
-    /* Déplace vers le haut */
   }
   100% {
     opacity: 1;
     transform: translateY(0);
-    /* Arrive à sa position normale */
   }
 }
 .custom_options li.anim_select {

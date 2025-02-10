@@ -1,22 +1,9 @@
 <?php
-/*
-function add_fancybox_assets()
-{
-    wp_enqueue_style('fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css');
-    wp_enqueue_script('fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js', array('jquery'), null, true);
-}
-add_action('wp_enqueue_scripts', 'add_fancybox_assets');
-*/
-///////
 
 
 function theme_enqueue_scripts()
 {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
-    //wp_enqueue_script('jquery');
-    //wp_enqueue_style('fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.css');
-    //wp_enqueue_script('fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4/dist/fancybox.umd.js', array('jquery'), null, true);
-    // Enfile ton script personnalisé
     wp_enqueue_script('custom-script', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), null, true);
 
     // Localise le script pour l'usage de l'URL AJAX
@@ -181,7 +168,7 @@ function theme_apply_custom_fonts()
 
         }
     </style>
-<?php
+    <?php
 }
 add_action('wp_head', 'theme_apply_custom_fonts');
 
@@ -203,7 +190,7 @@ function mon_theme_register_menus()
 }
 add_action('init', 'mon_theme_register_menus');
 
-
+// fonction pour creer le type de contenu personnalisé
 function creer_type_contenu_personnalise()
 {
     $labels = array(
@@ -251,7 +238,7 @@ add_action('init', 'remove_unwanted_supports', 11);
 
 
 
-
+//fonction pour gerer la requete ajax
 function filter_photos_ajax()
 {
     // Récupération des paramètres
@@ -285,9 +272,7 @@ function filter_photos_ajax()
         'order' => $date === 'rand' ? 'ASC' : ($date === 'desc' ? 'DESC' : 'ASC'),
     );
 
-    // Exécution de la requête
     $query = new WP_Query($args);
-    //$response = '';
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
             get_template_part('template-parts/content', get_post_format());
@@ -303,3 +288,41 @@ function filter_photos_ajax()
 }
 add_action('wp_ajax_filter_photos', 'filter_photos_ajax');
 add_action('wp_ajax_nopriv_filter_photos', 'filter_photos_ajax');
+
+//fonction pour ajouter l'option plein ecran des images via le backoffice
+function custom_acf_render_image_field($field)
+{
+    if ($field['type'] === 'image') {
+    ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                var imageField = $('input[name="<?php echo esc_attr($field['name']); ?>"]');
+                var imageUrl = imageField.closest('.acf-field').find('img').attr('src');
+                var button = $('<button type="button" class="button full-screen-btn">Afficher en plein écran</button>');
+                imageField.closest('.acf-field').append(button);
+
+                button.on('click', function() {
+                    var imageWindow = window.open(imageUrl, '_blank');
+                    imageWindow.focus();
+                });
+            });
+        </script>
+        <style>
+            .full-screen-btn {
+                margin-top: 10px;
+                display: inline-block;
+                background-color: #0073aa;
+                color: #fff;
+                border: none;
+                padding: 8px 16px;
+                cursor: pointer;
+            }
+
+            .full-screen-btn:hover {
+                background-color: #005177;
+            }
+        </style>
+<?php
+    }
+}
+add_action('acf/render_field', 'custom_acf_render_image_field');

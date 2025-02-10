@@ -15,9 +15,6 @@
 </main>
 </div>
 </div>
-<?php //get_template_part('template-parts/footer/footer-widgets'); 
-?>
-
 <footer id="colophon" class="site-footer">
 	<!-- Inclure le template de la modale -->
 	<?php get_template_part('template-parts/modale-template');

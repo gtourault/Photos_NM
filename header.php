@@ -60,8 +60,8 @@
 				</button>
 				<button class="lightbox-prev .prev-photo">
 					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" viewBox="0 0 30 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M28 12H8"></path> <!-- Ligne horizontale plus longue -->
-						<path d="M12 6L6 12l6 6"></path> <!-- Pointe de la flèche avec lignes moins épaisses -->
+						<path d="M28 12H8"></path>
+						<path d="M12 6L6 12l6 6"></path>
 					</svg>
 					Précédente
 				</button>
@@ -74,8 +74,8 @@
 				</div class=".lightbox-image-container">
 				<button class="lightbox-next .next-photo">Suivante
 					<svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" viewBox="0 0 30 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M2 12h20"></path> <!-- Ligne horizontale plus longue -->
-						<path d="M18 6l6 6-6 6"></path> <!-- Pointe de la flèche avec lignes moins épaisses -->
+						<path d="M2 12h20"></path>
+						<path d="M18 6l6 6-6 6"></path>
 					</svg>
 				</button>
 			</div>
